@@ -10,27 +10,27 @@ export class ProductService {
   constructor(private httpclient: HttpClient) { }
 
   GetProducts():Observable<ProductDTO[]>{
-  return this.httpclient.get<ProductDTO[]>(this.ApiUrl+'Api/Employee/GetEmployees');
+  return this.httpclient.get<ProductDTO[]>(this.ApiUrl+'Api/Product/GetProducts');
   }
 
   GetProductById(Id:string):Observable<ProductDTO>{
-    return this.httpclient.get<ProductDTO>(this.ApiUrl+'Api/Employee/GetEmployeeById/'+Id);
+    return this.httpclient.get<ProductDTO>(this.ApiUrl+'Api/Product/GetProductById/'+Id);
   }
-   InsertProduct(employee:ProductDTO){
-   return this.httpclient.post<ProductDTO>(this.ApiUrl+'Api/Employee/InsertEmployee',employee);
+   InsertProduct(product:ProductDTO){
+   return this.httpclient.post<ProductDTO>(this.ApiUrl+'Api/Product/InsertProduct',product);
 }
 
-  UpdateProduct(employee:ProductDTO):Observable<ProductDTO>{
-    return this.httpclient.put<ProductDTO>(this.ApiUrl+'Api/Employee/UpdateEmployee/',employee);
+  UpdateProduct(product:ProductDTO):Observable<ProductDTO>{
+    return this.httpclient.put<ProductDTO>(this.ApiUrl+'Api/Product/Updateproduct/',product);
   }
 
   DeleteProduct(Id:string){
-    return this.httpclient.delete(this.ApiUrl+'Api/Employee/DeleteEmployee/'+Id);
+    return this.httpclient.delete(this.ApiUrl+'Api/Product/DeleteProduct/'+Id);
   }
 
   UserAuthentication(UserName: string,Password: string):Observable<any>{
    let credentials='username=' +UserName  + '&password=' +Password +'&grant_type=password'; 
-   var reqHeader = new HttpHeaders({'Access-Control-Allow-Origin':'*','Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
+   var reqHeader = new HttpHeaders({'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
   return this.httpclient.post<any>(this.ApiUrl+'token',encodeURI(credentials),{headers:reqHeader});
 }
 }

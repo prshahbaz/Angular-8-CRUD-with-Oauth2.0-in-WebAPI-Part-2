@@ -13,19 +13,20 @@ export class LoginComponent implements OnInit {
   constructor(private productService:ProductService, private router:Router) { }
 
   ngOnInit() {
-  }
+    if(localStorage.getItem('userToken')!=null){
+      this.router.navigate(['/Product']);
+    }
+  } 
   LoginForm=new FormGroup({
     UserName: new FormControl('',Validators.required),
     Password: new FormControl('',Validators.required),
    }); 
- //UserName=new FormControl('',Validators.required);
- //Password=new FormControl('',Validators.required);
  OnGetToken(){
    const user=this.LoginForm.controls['UserName'].value;
    const pass=this.LoginForm.controls['Password'].value;
   this.productService.UserAuthentication(user,pass).subscribe((data:any)=>{
   localStorage.setItem('userToken',data.access_token);
-  this.router.navigate(['/Employee']);
+  this.router.navigate(['/Product']);
   });
   }
 }

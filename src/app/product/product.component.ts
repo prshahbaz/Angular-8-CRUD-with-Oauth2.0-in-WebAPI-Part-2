@@ -24,11 +24,11 @@ export class ProductComponent implements OnInit {
    OnSubmit(){
     if(this.productIdUpdate==null){
        const product=this.ProductForm.value;
-       this.InsertEmployee(product);
+       this.InsertProduct(product);
     }
     else{
        const employee=this.ProductForm.value;
-       this.UpdateEmployee(employee);
+       this.UpdateProduct(employee);
     }
  }
  
@@ -42,24 +42,24 @@ export class ProductComponent implements OnInit {
     }); 
    
  }
- SetProductFormValues(product:ProductDTO){
+ SetProductFormValues(product: ProductDTO){
   this.ProductForm.controls['Name'].setValue(product.Name);
   this.ProductForm.controls['Price'].setValue(product.Price);
-  this.productIdUpdate=product.Id;
+  this.productIdUpdate=product.ID;
  }
- InsertEmployee(employee:ProductDTO){
-    this.productservice.InsertProduct(employee).subscribe(()=>{
+ InsertProduct(product:ProductDTO){
+    this.productservice.InsertProduct(product).subscribe(()=>{
        this.GetAllProducts();
     });
  }
- UpdateEmployee(employee:ProductDTO){
- employee.Id=this.productIdUpdate;
-  this.productservice.UpdateProduct(employee).subscribe(()=>{
+ UpdateProduct(product:ProductDTO){
+   product.ID=this.productIdUpdate;
+  this.productservice.UpdateProduct(product).subscribe(()=>{
     this.productIdUpdate=null;
     this.GetAllProducts();
   });
  }
- DeleteEmployee(Id:string){
+ DeleteProduct(Id:string){
   this.productservice.DeleteProduct(Id).subscribe(()=>{
     this.productIdUpdate=null;
     this.GetAllProducts();

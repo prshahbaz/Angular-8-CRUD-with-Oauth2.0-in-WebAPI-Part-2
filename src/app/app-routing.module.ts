@@ -4,6 +4,7 @@ import { ProductComponent} from '../app/product/product.component';
 import {LoginComponent} from '../app/login/login.component';
 
 const routes: Routes = [
+  {path:'', redirectTo:'/Product',pathMatch:'full'},
    {path:'Product', component:ProductComponent},
    {path:'Login', component:LoginComponent}
  ];
