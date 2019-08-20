@@ -1,0 +1,16 @@
+<form [formGroup]="LoginForm" (ngSubmit)="OnGetToken()">
+    <div>
+     <Label>
+     UserName
+    <input type="text" formControlName="UserName">
+    </Label>
+    </div>
+    <div>
+    <label>
+        <input type="password" formControlName="Password">
+    </label>
+    </div>
+    <div>
+    <button type="submit" [disabled]="!LoginForm.valid"> Login</button>
+    </div>
+</form>

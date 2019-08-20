@@ -9,23 +9,22 @@ export class ProductService {
   ApiUrl='http://localhost:49978/';
   constructor(private httpclient: HttpClient) { }
 
-  GetEmployees():Observable<ProductDTO[]>{
+  GetProducts():Observable<ProductDTO[]>{
   return this.httpclient.get<ProductDTO[]>(this.ApiUrl+'Api/Employee/GetEmployees');
   }
 
-  GetEmployeeById(Id:string):Observable<ProductDTO>{
-   // let Id=new HttpParams().set("Id",EmployeeId);
+  GetProductById(Id:string):Observable<ProductDTO>{
     return this.httpclient.get<ProductDTO>(this.ApiUrl+'Api/Employee/GetEmployeeById/'+Id);
   }
-   InsertEmployee(employee:ProductDTO){
+   InsertProduct(employee:ProductDTO){
    return this.httpclient.post<ProductDTO>(this.ApiUrl+'Api/Employee/InsertEmployee',employee);
 }
 
-  UpdateEmployee(employee:ProductDTO):Observable<ProductDTO>{
+  UpdateProduct(employee:ProductDTO):Observable<ProductDTO>{
     return this.httpclient.put<ProductDTO>(this.ApiUrl+'Api/Employee/UpdateEmployee/',employee);
   }
 
-  DeleteEmployee(Id:string){
+  DeleteProduct(Id:string){
     return this.httpclient.delete(this.ApiUrl+'Api/Employee/DeleteEmployee/'+Id);
   }
 

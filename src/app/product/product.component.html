@@ -1,0 +1,47 @@
+<form [formGroup]="ProductForm" (ngSubmit)="OnSubmit()">
+    <div>
+    <label>
+      Name
+        <input type="text" formControlName="Name">
+    </label>
+  </div>
+  <div style="margin-top: 20px">
+    <label>
+     Price
+        <input type="text" formControlName="Price">
+    </label>
+  </div>
+   <div>
+      <button type="submit" [disabled]="!ProductForm.valid">Save</button>
+   </div>
+  </form>
+  <table>
+    <tr>
+    <th>
+      Name
+    </th>
+    <th>
+     Price
+    </th>
+    <th>
+      Update Record
+    </th>
+    <th>
+        Delete Record
+      </th>
+  </tr>
+  <tr *ngFor="let item of ProductList">
+  <td>
+      {{item.Name}}
+    </td>
+    <td>
+        {{item.Price}}
+      </td>
+      <td>
+        <button type="button" (click)="GetProductById(item.Id)">Edit</button>  
+      </td>
+      <td>
+          <button type="button" (click)="DeleteProduct(item.Id)">Delete</button>  
+      </td>
+  </tr>
+  </table>
