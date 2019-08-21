@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  ApiUrl='http://localhost:49978/';
+  ApiUrl='http://localhost:57046/';
   constructor(private httpclient: HttpClient) { }
 
   GetProducts():Observable<ProductDTO[]>{

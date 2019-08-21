@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   constructor(private productService:ProductService, private router:Router) { }
 
   ngOnInit() {
-    if(localStorage.getItem('userToken')!=null){
+    if(window.sessionStorage.getItem('userToken')!=null){
       this.router.navigate(['/Product']);
     }
   } 
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
    const user=this.LoginForm.controls['UserName'].value;
    const pass=this.LoginForm.controls['Password'].value;
   this.productService.UserAuthentication(user,pass).subscribe((data:any)=>{
-  localStorage.setItem('userToken',data.access_token);
+  window.sessionStorage.setItem('userToken',data.access_token);
   this.router.navigate(['/Product']);
   });
   }
